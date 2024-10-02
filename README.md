@@ -1,9 +1,11 @@
 # make-sense-of-MapReduce
 
-Implement a simple MapReduce in Golang
+Implement a simple MapReduce in Golang.
+
 Use Docker environment to simulate the word count task.
 
 MapReduce is More Than Just a Programming Framework:
+
 It’s a programming model that simplifies processing large data sets across distributed clusters by abstracting the complexity of parallelization, fault tolerance, data distribution, and load balancing.
 
 ## Architecture
