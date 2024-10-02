@@ -1,0 +1,61 @@
+version: "3"
+
+services:
+  master:
+    image: mapreduce-master
+    container_name: master
+    ports:
+      - "1234:1234"
+    volumes:
+      - input_data:/app/input_data
+      - output_data:/app/output_data
+    networks:
+      - mapreduce_net
+
+  worker1:
+    image: mapreduce-worker
+    depends_on:
+      - master
+    volumes:
+      - input_data:/app/input_data
+      - output_data:/app/output_data
+    networks:
+      - mapreduce_net
+
+  worker2:
+    image: mapreduce-worker
+    depends_on:
+      - master
+    volumes:
+      - input_data:/app/input_data
+      - output_data:/app/output_data
+    networks:
+      - mapreduce_net
+
+  worker3:
+    image: mapreduce-worker
+    depends_on:
+      - master
+    volumes:
+      - input_data:/app/input_data
+      - output_data:/app/output_data
+    networks:
+      - mapreduce_net
+
+volumes:
+  input_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${PWD}/input_data
+  output_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${PWD}/output_data
+
+networks:
+  mapreduce_net:
+    driver: bridge

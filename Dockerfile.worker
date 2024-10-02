@@ -1,0 +1,9 @@
+FROM golang
+
+WORKDIR /app
+
+COPY ./src .
+
+RUN go build -o worker worker.go common.go
+
+CMD ["./worker"]
